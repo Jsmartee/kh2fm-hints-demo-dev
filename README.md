@@ -1,5 +1,7 @@
 # kh2fm-hints-demo
 
+DEVELOPMENT BUILD
+
 Bare bones hint generator for the Kingdom Hearts 2 Final Mix randomizer.
 Based on SpikeVegeta's hint system where each Ansem Report is a hint that tells you how many important checks are in a world.
 
