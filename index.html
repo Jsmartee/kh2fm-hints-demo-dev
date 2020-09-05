@@ -14,6 +14,7 @@
         <h1>KH2FM Randomizer Hints Demo</h1>
 
         <p>This is a dev build of the hints generator. To use the stable version, go here: <a href="https://jsmartee.github.io/kh2fm-hints-demo/">Hint Genrator</a></p>
+        <p>Feature: Reports hint to the next report</p>
         <!-- <p>This hint generator tells you how many important checks are in a world.
         To see what is considered an important check and more information about this generator, see the <a href="https://github.com/Jsmartee/kh2fm-hints-demo">Readme</a></p>
         <p>The design and styling of this page was done by Zax, the creator of the KH2FM Randomizer Item Tracker. Check out his work: <a href="https://tracker.zaxu.xyz/">KH2FM Item Tracker</a></p>
@@ -38,6 +39,17 @@
             <p>Select a seed and click the Generate Hints button. The seed needs to be a pnach file.</p>
 
             <div>
+                <div>
+                    <p>Each report will hint towards the location of the next report.
+                    <br>Ex: Report 3 says "[location] has [number] important checks. Report 4 is from [location]"</p>
+                    <div class="row">
+                        <label class="switch">
+                            <input type="checkbox" id="ReportOption"/>
+                            <span class="slider"></span>
+                        </label>
+                        <p>Hint Next Report Location</p>
+                    </div>
+                </div>
                 <div id="include">
                     <p>You can select a category of item to include/exclude from the important checks pool. 
                     <br>(toggled = include : untoggled = exclude)</p>
@@ -98,18 +110,6 @@
                             <span class="slider"></span>
                         </label>
                         <p>Atlantica</p>
-                    </div>
-                </div>
-
-                <div>
-                    <p>Each report will hint towards the location of the next report.
-                    <br>Ex: Report 3 says "[location] has [number] important checks. Report 4 is from [location]"</p>
-                    <div class="row">
-                        <label class="switch">
-                            <input type="checkbox" id="ReportOption"/>
-                            <span class="slider"></span>
-                        </label>
-                        <p>Hint Next Report Location</p>
                     </div>
                 </div>
             </div>
