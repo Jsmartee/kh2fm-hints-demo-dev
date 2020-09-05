@@ -1,4 +1,6 @@
-# kh2fm-hints-demo
+# kh2fm-hints-demo-DEV
+
+DEVELOPMENT BUILD
 
 Bare bones hint generator for the Kingdom Hearts 2 Final Mix randomizer.
 Based on SpikeVegeta's hint system where each Ansem Report is a hint that tells you how many important checks are in a world.
@@ -6,7 +8,7 @@ Based on SpikeVegeta's hint system where each Ansem Report is a hint that tells 
 Here's a tracker made to be compatible with this hint system: https://github.com/TrevorLuckey/KH2Tracker
 
 ## How To Use
-* Go to https://jsmartee.github.io/kh2fm-hints-demo/
+* Go to https://jsmartee.github.io/kh2fm-hints-demo-dev/
 * Select the pnach file you got from the randomizer generator website and click "Generate Hints".
 * Option: You can select different categories of items to be excluded from the pool of important checks.
 * Option: You can choose to exclude certain worlds from having hints. This is here so that if you set a world to "Replace" on the randomizer website, you can opt out of getting a useless hint for that world.
