@@ -234,7 +234,28 @@ var abilities = [
 
 var finalform = [
     "0000001D"
+];
+
+var promiseCharm = [
+    "0000020C"
 ]
+
+var summons = [
+    //Summons
+    "0000017F", "00000019", "0000009F", "000000A0",
+];
+
+var cure = [
+    "00000018"
+];
+
+var reflect = [
+    "00000058"
+];
+
+var magnet = [
+    "00000057"
+];
 
 var proofs = [
     "00000251", "00000252", "00000253" //connection, nonexistence, peace
@@ -545,6 +566,19 @@ function include(id) {
 
             case 'final':
                 keyItems = keyItems.concat(finalform);
+                break;
+
+            case 'required':
+                var index = keyItems.indexOf(promiseCharm[0]);
+                keyItems.splice(index, 1);
+                var index2 = keyItems.indexOf(summons[0]);
+                keyItems.splice(index2, 4);
+                var index3 = keyItems.indexOf(cure[0]);
+                keyItems.splice(index3, 1);
+                var index4 = keyItems.indexOf(reflect[0]);
+                keyItems.splice(index4, 1);
+                document.getElementById('abilities').disabled = true;
+                break;
         }
     }
     else {
@@ -567,6 +601,10 @@ function include(id) {
             case 'final':
                 var index = keyItems.indexOf(finalform[0]);
                 keyItems.splice(index, 1);    
+                break;
+
+            case 'required':
+                keyItems = keyItemsDefault;
                 break;
         }
     }
