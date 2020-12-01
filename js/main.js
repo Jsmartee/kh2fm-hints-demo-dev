@@ -1,60 +1,3 @@
-function load(elem) {
-    elem.nextElementSibling.click();
-}
-
-//CSV functions from MounirMesselmeni
-function handleFiles(elem, files) {
-    // Check for the various File API support.
-    if (window.FileReader) {
-      // FileReader are supported.
-      getAsText(files[0]);
-    } 
-    else {
-        alert('FileReader are not supported in this browser.');
-    }
-
-    elem.nextElementSibling.innerText = files[0].name;
-    elem.previousElementSibling.classList.add("success");
-}
-  
-function getAsText(fileToRead) {
-    var reader = new FileReader();
-    // Read file into memory as UTF-8      
-    reader.readAsText(fileToRead);
-    // Handle errors load
-    reader.onload = loadHandler;
-    reader.onerror = errorHandler;
-}
-  
-function loadHandler(event) {
-    var csv = event.target.result;
-    processData(csv);
-}
-  
-var dataArray = [];
-  
-function processData(csv) {
-    var allTextLines = csv.split(/\r\n|\n/);
-    var lines = [];
-    for (var i=0; i<allTextLines.length; i++) {
-      var data = allTextLines[i].split(';');
-      var tarr = [];
-      for (var j=0; j<data.length; j++) {
-        tarr.push(data[j]);
-      }
-      lines.push(tarr);
-    }
-    dataArray = lines;
-    //console.log(lines);
-}
-  
-function errorHandler(evt) {
-    if(evt.target.error.name == "NotReadableError") {
-      alert("Cannot read file!");
-    }
-}
-//End CSV functions
-
 var locationList = [];
 var rewardList = [];
   
@@ -101,6 +44,8 @@ function start() {
     worlds = Object.keys(creatinglists);
 
     worldAndList = creatinglists;
+
+    document.getElementById('ReportOption').disabled = true;
 }
   
 function generate() {
@@ -233,64 +178,6 @@ function reveal(id) {
 Spikevegeta's Hint System
 Hint tells how many important checks in a world.
 */
-
-var keyItems = [
-    //Proofs and Promise Charm
-    "00000251", "00000252", "00000253", "0000020C",
-
-    //Drive Forms
-    "0000001A", "0000001B", "00000233", "0000001F", "0000001D",
-
-    //Summons
-    "0000017F", "00000019", "0000009F", "000000A0",
-
-    //Magic
-    "00000015", "00000016", "00000017", "00000018", "00000057", "00000058",
-
-    //Torn Pages
-    "00000020",
-];
-
-var ansemReports = [
-    "000000E2", "000000E3", "000000E4", "000000E5", "000000E6", "000000E7", "000000E8", "000000E9", "000000EA", "000000EB", "000000EC", "000000ED", "000000EE"
-];
-
-var tornPages = [
-    "00000020"
-];
-
-var abilities = [
-    "0000019F", "000001A0" //Second Chance & Once More
-];
-
-var finalform = [
-    "0000001D"
-];
-
-var promiseCharm = [
-    "0000020C"
-]
-
-var summons = [
-    //Summons
-    "0000017F", "00000019", "0000009F", "000000A0",
-];
-
-var cure = [
-    "00000018"
-];
-
-var reflect = [
-    "00000058"
-];
-
-var magnet = [
-    "00000057"
-];
-
-var proofs = [
-    "00000251", "00000252", "00000253" //connection, nonexistence, peace
-];
 
 //Create list of rewards from world
 function createWorldList(world) {

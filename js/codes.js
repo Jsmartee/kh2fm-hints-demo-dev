@@ -1,3 +1,61 @@
+var keyItems = [
+    //Proofs and Promise Charm
+    "00000251", "00000252", "00000253", "0000020C",
+
+    //Drive Forms
+    "0000001A", "0000001B", "00000233", "0000001F", "0000001D",
+
+    //Summons
+    "0000017F", "00000019", "0000009F", "000000A0",
+
+    //Magic
+    "00000015", "00000016", "00000017", "00000018", "00000057", "00000058",
+
+    //Torn Pages
+    "00000020",
+];
+
+var ansemReports = [
+    "000000E2", "000000E3", "000000E4", "000000E5", "000000E6", "000000E7", "000000E8", "000000E9", "000000EA", "000000EB", "000000EC", "000000ED", "000000EE"
+];
+
+var tornPages = [
+    "00000020"
+];
+
+var abilities = [
+    "0000019F", "000001A0" //Second Chance & Once More
+];
+
+var finalform = [
+    "0000001D"
+];
+
+var promiseCharm = [
+    "0000020C"
+]
+
+var summons = [
+    //Summons
+    "0000017F", "00000019", "0000009F", "000000A0",
+];
+
+var cure = [
+    "00000018"
+];
+
+var reflect = [
+    "00000058"
+];
+
+var magnet = [
+    "00000057"
+];
+
+var proofs = [
+    "00000251", "00000252", "00000253" //connection, nonexistence, peace
+];
+
 var keyItemsDefault = [
         //Proofs and Promise Charm
         "00000251", "00000252", "00000253", "0000020C",

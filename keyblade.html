@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>KH2FMR Hints Demo Dev | Guiding Keys</title>
+        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+        <script type="text/javascript" src="js/main.js"></script>
+        <script type="text/javascript" src="js/csv.js"></script>
+        <script type="text/javascript" src="js/codes.js"></script>
+        <script type="text/javascript" src="js/FileSaver.js"></script>
+    </head>
+<body>
+
+    <h1>KH2FM Randomizer Hints Demo</h1>
+    <h2>Guiding Keys</h2>
+
+    <p>This version of the hint system has keyblades and other key items hint to an associated world for items required to beat the seed and the 13 reports hints towards optional items.</p>
+
+    <hr>
+
+    <h5>General Format</h5>
+    <p>Each world has an associated keyblade or key item that will reveal a hint. 
+    For example, picking up Hero's Crest will reveal a hint saying "Olympus Coliseum has 2 Keys to Light."
+    This means that world has 2 items from the Keys to Light list.
+    The Keys to Light list contains items only required to beat the seed, so unlike the important checks system, summons will not be hinted.
+    Instead, summons will be put in the Report Items list and have a chance of being hinted by the 13 reports.
+    In this version of the hint system, every world is hinted since all of these items can be picked up in a seed.</p>
+    <p>The Report Items list contains things that are not required to beat the seed, but may be useful. This can include summons, abilities, and optional magic like Cure.
+    13 of the items from the list are randomly chosen in a seed and hinted by a report. 
+    Examples of this hint can be "Reports show that Chicken Little is in Hollow Bastion." or "Reports show that Explosion is in Disney Castle."
+    </p>
+
+    <h5>Keys to Light</h5>
+    <ul>
+        <li>3 Proofs</li>
+        <li>5 Drive Forms</li>
+        <li>5 Torn Pages</li>
+        <li>12 magic (3 fire, 3 blizzard, 3 thunder, 3 magnet)</li>
+    </ul>
+
+    <h5>Report Items</h5>
+    <ul>
+        <li>Promise Charm</li>
+        <li>Chicken Little</li>
+        <li>Genie</li>
+        <li>Stitch</li>
+        <li>Peter Pan</li>
+        <li>13 Ansem Reports</li>
+        <li>Second Chance</li>
+        <li>Once More</li>
+        <li>Guard</li>
+        <li>Horizontal Slash</li>
+        <li>Finishing Leap</li>
+        <li>Slide Dash</li>
+        <li>Guard Break</li>
+        <li>Explosion</li>
+        <li>Magnet Burst</li>
+        <li>Trinity</li>
+        <li>Scan</li>
+        <li>Aerial Recovery</li>
+        <li>Combo Master</li>
+        <li>Finishing Plus</li>
+        <li>Negative Combo</li>
+        <li>Berserk Charge</li>
+        <li>Experience Boost</li>
+        <li>Light and Darkness</li>
+    </ul>
+
+    <h5>Keyblade and Key Items</h5>
+    <ul>
+        <li>Namine's Sketches hints Simulated Twilight Town</li>
+        <li>Ice Cream hints Twilight Town</li>
+        <li>Membership Card hints Hollow Bastion</li>
+        <li>Hidden Dragon hints Land of Dragons</li>
+        <li>Rumbling Rose hints Beast's Castle</li>
+        <li>Hero's Crest hints Olympus Coliseum</li>
+        <li>Monochrome hints Disney Castle</li>
+        <li>Follow the Wind hints Port Royal</li>
+        <li>Wishing Lamp hints Agrabah</li>
+        <li>Decisive Pumpkin hints Halloween Town</li>
+        <li>Circle of Life hints Pride Lands</li>
+        <li>Photon Debugger hints Space Paranoids</li>
+        <li>Sweet Memories hints 100 Acre Wood</li>
+        <li>Mysterious Abyss hints Atlantica</li>
+        <li>Star Seeker hints Drive Forms</li>
+        <li>Crystal Orb hints Sora's Heart</li>
+        <li>Picture hints The World That Never Was</li>
+    </ul>
+
+    <div class="row">
+        <label class="switch">
+            <input type="checkbox" id="theme" onclick="toggleTheme(this)">
+            <span class="slider"></span>
+        </label>
+        <p>Dark Theme</p>
+    </div>
+    
+    <script type="text/javascript" src="js/theme.js"></script>
+</body>
+</html>
