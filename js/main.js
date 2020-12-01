@@ -71,7 +71,7 @@ var worldAndList = [];
 function start() {
     alllists.push(AcreWood, SimulatedTwilightTown, TwilightTown, HollowBastion, BeastsCastle, 
         OlympusColiseum, Agrabah, LandOfDragons, PrideLands, DisneyCastle, 
-        HalloweenTown, PortRoyal, SpaceParanoids, TheWorldThatNeverWas, Forms, Levels, Atlantica);
+        HalloweenTown, PortRoyal, SpaceParanoids, TheWorldThatNeverWas, Forms, Levels, Atlantica, Free);
 
     lists.push(AcreWood, SimulatedTwilightTown, TwilightTown, HollowBastion, BeastsCastle, 
         OlympusColiseum, Agrabah, LandOfDragons, PrideLands, DisneyCastle, 
@@ -95,6 +95,7 @@ function start() {
         "Drive Forms" : Forms,
         "Sora's Heart" : Levels,
         "Atlantica" : Atlantica,
+        "Free" : Free
     }
 
     worlds = Object.keys(creatinglists);
@@ -147,6 +148,19 @@ function uploadHints() {
         }
         hints.push(writeHint(world, number));
     }
+
+    var row2 = dataArray[1].toString().split('.');
+    for(var i = 0; i < row2.length; i++) {
+        var index = row2[i].toString().split(',');
+        var code = index[0];
+        for(var j = 0; j < alllists.length; j++) {
+            if(alllists[j].includes(code)) {
+                var world = worlds[j];
+                reportLocations.push(world);
+            }
+        }
+    }
+
     document.getElementById("upload-btn").classList.add("success");
     document.getElementById('upload-btn').disabled = true;
     document.getElementById('gen').disabled = true;
@@ -184,6 +198,8 @@ function getLists() {
     }
 }
 
+var tries = [0,0,0,0,0,0,0,0,0,0,0,0,0];
+
 function reveal(id) {
     if(dataArray.length === 0) {
         document.getElementById('report-' + id).innerHTML = "Please select a seed to generate hints.";
@@ -193,8 +209,23 @@ function reveal(id) {
     }
     else {
         var text = document.getElementById('report-' + id);
-        text.innerHTML = hints[id - 1];
-        document.getElementById(id).classList.add("success");
+        var location = document.getElementById("report-" + id + "-location").value;
+        if(location === reportLocations[id - 1]) {
+            text.innerHTML = hints[id - 1];
+            document.getElementById(id).classList.add("success");
+            document.getElementById("report-" + id + "-location").disabled = true;
+        }
+        else {
+            tries[id - 1]++;
+            if(tries[id - 1] === 3) {
+                document.getElementById(id).disabled = true;
+                document.getElementById('report-' + id).innerHTML = "Number of tries exceeded. Button disabled.";
+                document.getElementById("report-" + id + "-location").disabled = true;
+            }
+            else {
+                document.getElementById('report-' + id).innerHTML = "Number of tries remaining: " + (3 - tries[id - 1]);
+            }
+        }
     }
 }
 
@@ -478,6 +509,8 @@ function createHints() {
     sortWorldLists(LUproof, "Sora's Heart");
     var LUnumber = numberOfChecks(LU);
     
+    var Fcode = Free[Math.floor(Math.random() * 4)];
+
     var worldChecks = {
         "100 Acre Wood" : AWnumber,
         "Atlantica" : ATnumber,
@@ -495,7 +528,8 @@ function createHints() {
         "Space Paranoids" : SPnumber,
         "The World That Never Was" : TWTNWnumber,
         "Drive Forms" : DFnumber,
-        "Sora's Heart" : LUnumber
+        "Sora's Heart" : LUnumber,
+        "Free" : Fcode
     }
 
     var codeChecks = {
@@ -544,6 +578,11 @@ function createHints() {
             hints.push(writeHint(selectedworlds[i], worldChecks[selectedworlds[i]]));
             savedhints.push(codeChecks[selectedworlds[i]] + "," + (worldChecks[selectedworlds[i]] + 32) + ".");
         }
+    }
+
+    savedhints.push("\n");
+    for(var i = 0; i < 13; i++) {
+        savedhints.push(codeChecks[reportLocations[i]] + ".");
     }
 
 }
