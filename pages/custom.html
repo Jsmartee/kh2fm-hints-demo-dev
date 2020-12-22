@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>KH2FMR Hints Demo Dev</title>
+        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="/css/style.css">
+        <script type="text/javascript" src="/js/main.js"></script>
+        <script type="text/javascript" src="/js/logic.js"></script>
+        <script type="text/javascript" src="/js/csv.js"></script>
+        <script type="text/javascript" src="/js/codes.js"></script>
+        <script type="text/javascript" src="/js/FileSaver.js"></script>
+    </head>
+    <body>
+        <h1>KH2FM Randomizer Hints Demo</h1>
+
+        <div class="nav">
+            <ul>
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="original.html">Hint Generator (Dev)</a></li>
+                <!-- <li><a href="report.html">Report Items System</a></li> -->
+                <!-- <li><a class="active" href="score.html">Point Based System (Coming Soon)</a></li> -->
+                <li><a class="active" href="custom.html">Customizable Pool (Coming Soon*)</a></li>
+                <li><a href="changelog.html">Changelog</a></li>
+              </ul>
+        </div>
+
+        <p class="disclaimer">! This is a dev build of the hints generator. To use the stable version, go here: <a href="https://jsmartee.github.io/kh2fm-hints-demo/">Hint Generator</a></p>
+
+        <p>This build will allow the user to select their own important checks pool with a cap of 50. <br>
+            Please report any bugs or issues to Jsmartee#7416 on Discord. Suggestions are also welcome.</p>
+
+        <p>Item List (Subject to Change, Open to Suggestions):</p>
+        <ul>
+            <li>Items to Beat the Seed</li>
+            <ul>
+                <li>Proof of Connection</li>
+                <li>Proof of Nonexistence</li>
+                <li>Proof of Peace</li>
+                <li>Promise Charm</li>
+            </ul>
+            <li>Drive Forms</li>
+            <ul>
+                <li>Valor Form</li>
+                <li>Wisdom Form</li>
+                <li>Limit Form</li>
+                <li>Master Form</li>
+                <li>Final Form</li>
+            </ul>
+            <li>Torn Pages</li>
+            <li>Magic</li>
+            <ul>
+                <li>Fire</li>
+                <li>Blizzard</li>
+                <li>Thunder</li>
+                <li>Cure</li>
+                <li>Reflect</li>
+                <li>Magnet</li>
+            </ul>
+            <li>Summons</li>
+            <ul>
+                <li>Chicken Little</li>
+                <li>Genie</li>
+                <li>Stitch</li>
+                <li>Peter Pan</li>
+            </ul>
+            <li>Ansem Reports</li>
+            <li>Action Abilities</li>
+            <ul>
+                <li>Guard</li>
+                <li>Horizontal Slash</li>
+                <li>Finishing Leap</li>
+                <li>Slide Dash</li>
+                <li>Guard Break</li>
+                <li>Explosion</li>
+                <li>Magnet Burst</li>
+                <li>Trinity</li>
+            </ul>
+            <li>Support Abilities</li>
+            <ul>
+                <li>Scan</li>
+                <li>Aerial Recovery</li>
+                <li>Combo Master</li>
+                <li>Finishing Plus</li>
+                <li>Negative Combo</li>
+                <li>Berserk Charge</li>
+                <li>Experience Boost</li>
+                <li>Light and Darkness</li>
+                <li>Second Chance</li>
+                <li>Once More</li>
+            </ul>
+        </ul>
+        
+        <p class="disclaimer">Coming Soon*</p>
+
+        <br>
+
+        <div class="row">
+            <label class="switch">
+                <input type="checkbox" id="theme" onclick="toggleTheme(this)">
+                <span class="slider"></span>
+            </label>
+            <p>Dark Theme</p>
+        </div>
+
+        <hr>
+
+        <footer>
+            <p id="update">Last updated: 12/21/20</p>
+            <p>Report any bugs or problems to Jsmartee#7416 on Discord.</p>
+            <p>Feedback/suggestions are also welcome.</p>
+        </footer>
+
+        <script type="text/javascript" src="/js/theme.js"></script>
+    </body>
+</html>

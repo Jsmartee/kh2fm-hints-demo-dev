@@ -1,6 +1,6 @@
 var keyItems = [
     //Proofs and Promise Charm
-    "00000251", "00000252", "00000253", "0000020C",
+    "00000251", "00000252", "00000253",
 
     //Drive Forms
     "0000001A", "0000001B", "00000233", "0000001F", "0000001D",
@@ -13,6 +13,9 @@ var keyItems = [
 
     //Torn Pages
     "00000020",
+
+    //Ansem Reports
+    "000000E2", "000000E3", "000000E4", "000000E5", "000000E6", "000000E7", "000000E8", "000000E9", "000000EA", "000000EB", "000000EC", "000000ED", "000000EE"
 ];
 
 var ansemReports = [
@@ -21,6 +24,11 @@ var ansemReports = [
 
 var tornPages = [
     "00000020"
+];
+
+var forms = [
+    //Drive Forms
+    "0000001A", "0000001B", "00000233", "0000001F", "0000001D"
 ];
 
 var abilities = [
@@ -54,6 +62,11 @@ var magnet = [
 
 var proofs = [
     "00000251", "00000252", "00000253" //connection, nonexistence, peace
+];
+
+//Promise Charm
+var charm = [
+    "0000020C"
 ];
 
 var keyItemsDefault = [

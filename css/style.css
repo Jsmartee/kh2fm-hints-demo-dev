@@ -170,13 +170,46 @@ footer .update {
     font-weight: bold;
 }
 
-a:link {
+/* a:link {
     color: red;
 }
 
 a:visited {
     color: green;
-}
+} */
+
+.nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+  }
+  
+  .nav li {
+    float: left;
+  }
+  
+  .nav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  .nav li a:hover:not(.active) {
+    background-color: #111;
+  }
+  
+  .nav .active {
+    background-color: hsl(210, 70%, 60%);
+  }
+
+  .disclaimer {
+      color: red;
+      font-size: x-large;
+  }
 
 @media screen and (max-width: 450px) {
     section {
@@ -206,13 +239,13 @@ a:visited {
     color: #202020;
 }
 
-:root[theme="dark"] a:link {
+/* :root[theme="dark"] a:link {
     color: hsl(0, 90%, 72%);
 }
 
 :root[theme="dark"] a:visited {
     color: hsl(140, 45%, 65%);
-}
+} */
 
 :root[theme="dark"] table button {
     background-color: #464646;

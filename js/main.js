@@ -45,7 +45,19 @@ function start() {
 
     worldAndList = creatinglists;
 
-    document.getElementById('ReportOption').disabled = true;
+    document.getElementById('promisecharm').checked = false;
+    document.getElementById('page').checked = true;
+    document.getElementById('report').checked = true;
+    document.getElementById('abilities').checked = false;
+    document.getElementById('final').checked = true;
+    document.getElementById('cure').checked = true;
+    document.getElementById("Sora's Heart").checked = true;
+    document.getElementById('Simulated Twilight Town').checked = true;
+    document.getElementById('100 Acre Wood').checked = true;
+    document.getElementById('Atlantica').checked = false;
+
+    document.getElementById('proofsHinted').checked = true;
+    document.getElementById('reportsHinted').checked = true;
 }
   
 function generate() {
@@ -64,6 +76,10 @@ function generate() {
         document.getElementById('Simulated Twilight Town').disabled = true;
         document.getElementById('100 Acre Wood').disabled = true;
         document.getElementById('Atlantica').disabled = true;
+
+        document.getElementById('proofsHinted').disabled = true;
+        document.getElementById('reportsHinted').disabled = true;
+
         for(var i = 1; i < 14; i++) {
             document.getElementById('report-' + i).innerHTML = "Click to reveal hint";
         }
@@ -71,6 +87,8 @@ function generate() {
         createHints();
         var seedName = dataArray[0].toString().split('');
         seed = seedName[3].concat(seedName[4], seedName[5], seedName[6]);
+
+        console.log(hints);
     }
 }
 
@@ -115,12 +133,19 @@ function uploadHints() {
     document.getElementById('report').disabled = true;
     document.getElementById('abilities').disabled = true;
     document.getElementById('final').disabled = true;
+    document.getElementById("Sora's Heart").disabled = true;
     document.getElementById('Simulated Twilight Town').disabled = true;
     document.getElementById('100 Acre Wood').disabled = true;
     document.getElementById('Atlantica').disabled = true;
+
+    document.getElementById('proofsHinted').disabled = true;
+    document.getElementById('reportsHinted').disabled = true;
+
     for(var i = 1; i < 14; i++) {
         document.getElementById('report-' + i).innerHTML = "Click to reveal hint";
     }
+
+    document.getElementById("hintSettings").innerHTML = dataArray[2].toString();
 }
 
 function shuffle(array) {
@@ -133,6 +158,7 @@ function shuffle(array) {
     return array;
 }
   
+var high = false;
 //Create location and reward lists
 function getLists() {
     for(var i = 0; i < dataArray.length; i++) {
@@ -140,6 +166,9 @@ function getLists() {
       var row = item.split(',');
       locationList.push(row[2]);
       rewardList.push(row[4]);
+      if(row[0] === "//Remove High Jump LVl") {
+          high = true;
+      }
     }
 }
 
@@ -214,6 +243,28 @@ function getProofs(world) {
     return proof;
 }
 
+//See if world/location has a form
+function getForms(world) {
+    var form = false;
+    for(var i = 0; i < world.length; i++) {
+        if(world.includes(forms[0]) || world.includes(forms[1]) || world.includes(forms[2]) || world.includes(forms[3]) || world.includes(forms[4])) {
+            form = true;
+        }
+    }
+    return form;
+}
+
+//See if world/location has a torn page
+function getPages(world) {
+    var page = false;
+    for(var i = 0; i < world.length; i++) {
+        if(world.includes(tornPages[0])) {
+            page = true;
+        }
+    }
+    return page;
+}
+
 //Prioritize worlds/locations with proofs
 function sortWorldLists(proof, worldName) {
     if(proof) {
@@ -224,6 +275,7 @@ function sortWorldLists(proof, worldName) {
 }
 
 var reportLocations = [];
+var reportLocationCodes = [];
 
 //finds location of item
 function findLocation(item) {
@@ -238,14 +290,28 @@ function findLocation(item) {
             }
         }
     }
-    console.log(locationCode);
     for(var j = 0; j < alllists.length; j++) {
         if(alllists[j].includes(locationCode)) {
             location = Object.keys(worldAndList).find(key => worldAndList[key] === alllists[j]);
         }
     }
-    console.log(location);
     return location;
+}
+
+var proofLocations = ["placeholder1", "placeholder2", "placeholder3"];
+//Sort proof locations
+function sortProofLocations(proof, worldRewards, world) {
+    if(proof) {
+        if(worldRewards.includes("00000251")) {
+            proofLocations[0] = world;
+        }
+        if(worldRewards.includes("00000252")) {
+            proofLocations[1] = world;
+        }
+        if(worldRewards.includes("00000253")) {
+            proofLocations[2] = world;
+        }
+    }
 }
 
 function writeHintReport(world, number, reportNumber, reportLocation) {
@@ -293,111 +359,165 @@ function writeHint(world, number) {
     return hint;
 }
 
+var AW;
+var AT;
+var STT;
+var TT;
+var HB;
+var BC;
+var OC;
+var AG;
+var LOD;
+var PL;
+var DC;
+var HT;
+var PR;
+var SP;
+var TWTNW;
+var DF;
+var LU;
+
 function createHints() {
-    var AW = createWorldList(AcreWood);
+    //create list of rewards in world
+    //select random code to be ID for world
+    //see if proof is in world
+    //add proof worlds to list
+    //prioritize world if there's a proof
+    //get number of important checks in world
+
+    AW = createWorldList(AcreWood);
     var AWcode = AcreWood[Math.floor(Math.random() * 4)];
     var AWproof = getProofs(AW);
-    sortWorldLists(AWproof, "100 Acre Wood");
+    sortProofLocations(AWproof, AW, "100 Acre Wood");
+    prioritizeWorld(AWproof, "100 Acre Wood");
     var AWnumber = numberOfChecks(AW);
 
-    var AT = createWorldList(Atlantica);
+    AT = createWorldList(Atlantica);
     var ATcode = Atlantica[Math.floor(Math.random() * 4)];
     var ATproof = getProofs(AT);
-    sortWorldLists(ATproof, "Atlantica");
+    sortProofLocations(ATproof, AT, "Atlantica");
+    prioritizeWorld(ATproof, "Atlantica");
     var ATnumber = numberOfChecks(AT);
 
-    var STT = createWorldList(SimulatedTwilightTown);
+    STT = createWorldList(SimulatedTwilightTown);
     var STTcode = SimulatedTwilightTown[Math.floor(Math.random() * 4)];
     var STTproof = getProofs(STT);
-    sortWorldLists(STTproof, "Simulated Twilight Town");
+    sortProofLocations(STTproof, STT, "Simulated Twilight Town");
+    prioritizeWorld(STTproof, "Simulated Twilight Town");
     var STTnumber = numberOfChecks(STT);
 
-    var TT = createWorldList(TwilightTown);
+    TT = createWorldList(TwilightTown);
     var TTcode = TwilightTown[Math.floor(Math.random() * 4)];
     var TTproof = getProofs(TT);
-    sortWorldLists(TTproof, "Twilight Town");
+    sortProofLocations(TTproof, TT, "Twilight Town");
+    prioritizeWorld(TTproof, "Twilight Town");
     var TTnumber = numberOfChecks(TT);
 
-    var HB = createWorldList(HollowBastion);
+    HB = createWorldList(HollowBastion);
     var HBcode = HollowBastion[Math.floor(Math.random() * 4)];
     var HBproof = getProofs(HB);
-    sortWorldLists(HBproof, "Hollow Bastion");
+    sortProofLocations(HBproof, HB, "Hollow Bastion");
+    prioritizeWorld(HBproof, "Hollow Bastion");
     var HBnumber = numberOfChecks(HB);
 
-    var BC = createWorldList(BeastsCastle);
+    BC = createWorldList(BeastsCastle);
     var BCcode = BeastsCastle[Math.floor(Math.random() * 4)];
     var BCproof = getProofs(BC);
-    sortWorldLists(BCproof, "Beast's Castle");
+    sortProofLocations(BCproof, BC, "Beast's Castle");
+    prioritizeWorld(BCproof, "Beast's Castle");
     var BCnumber = numberOfChecks(BC);
 
-    var OC = createWorldList(OlympusColiseum);
+    OC = createWorldList(OlympusColiseum);
     var OCcode = OlympusColiseum[Math.floor(Math.random() * 4)];
     var OCproof = getProofs(OC);
-    sortWorldLists(OCproof, "Olympus Coliseum");
+    sortProofLocations(OCproof, OC, "Olympus Coliseum");
+    prioritizeWorld(OCproof, "Olympus Coliseum");
     var OCnumber = numberOfChecks(OC);
 
-    var AG = createWorldList(Agrabah);
+    AG = createWorldList(Agrabah);
     var AGcode = Agrabah[Math.floor(Math.random() * 4)];
     var AGproof = getProofs(AG);
-    sortWorldLists(AGproof, "Agrabah");
+    sortProofLocations(AGproof, AG, "Agrabah");
+    prioritizeWorld(AGproof, "Agrabah");
     var AGnumber = numberOfChecks(AG);
 
-    var LOD = createWorldList(LandOfDragons);
+    LOD = createWorldList(LandOfDragons);
     var LODcode = LandOfDragons[Math.floor(Math.random() * 4)];
     var LODproof = getProofs(LOD);
-    sortWorldLists(LODproof, "Land of Dragons");
+    sortProofLocations(LODproof, LOD, "Land of Dragons");
+    prioritizeWorld(LODproof, "Land of Dragons");
     var LODnumber = numberOfChecks(LOD);
 
-    var PL = createWorldList(PrideLands);
+    PL = createWorldList(PrideLands);
     var PLcode = PrideLands[Math.floor(Math.random() * 4)];
     var PLproof = getProofs(PL);
-    sortWorldLists(PLproof, "Pride Lands");
+    sortProofLocations(PLproof, PL, "Pride Lands");
+    prioritizeWorld(PLproof, "Pride Lands");
     var PLnumber = numberOfChecks(PL);
 
-    var DC = createWorldList(DisneyCastle);
+    DC = createWorldList(DisneyCastle);
     var DCcode = DisneyCastle[Math.floor(Math.random() * 4)];
     var DCproof = getProofs(DC);
-    sortWorldLists(DCproof, "Disney Castle");
+    sortProofLocations(DCproof, DC, "Disney Castle");
+    prioritizeWorld(DCproof, "Disney Castle");
     var DCnumber = numberOfChecks(DC);
 
-    var HT = createWorldList(HalloweenTown);
+    HT = createWorldList(HalloweenTown);
     var HTcode = HalloweenTown[Math.floor(Math.random() * 4)];
     var HTproof = getProofs(HT);
-    sortWorldLists(HTproof, "Halloween Town");
+    sortProofLocations(HTproof, HT, "Halloween Town");
+    prioritizeWorld(HTproof, "Halloween Town");
     var HTnumber = numberOfChecks(HT);
 
-    var PR = createWorldList(PortRoyal);
+    PR = createWorldList(PortRoyal);
     var PRcode = PortRoyal[Math.floor(Math.random() * 4)];
     var PRproof = getProofs(PR);
-    sortWorldLists(PRproof, "Port Royal");
+    sortProofLocations(PRproof, PR, "Port Royal");
+    prioritizeWorld(PRproof, "Port Royal");
     var PRnumber = numberOfChecks(PR);
 
-    var SP = createWorldList(SpaceParanoids);
+    SP = createWorldList(SpaceParanoids);
     var SPcode = SpaceParanoids[Math.floor(Math.random() * 4)];
     var SPproof = getProofs(SP);
-    sortWorldLists(SPproof, "Space Paranoids");
+    sortProofLocations(SPproof, SP, "Space Paranoids");
+    prioritizeWorld(SPproof, "Space Paranoids");
     var SPnumber = numberOfChecks(SP);
 
-    var TWTNW = createWorldList(TheWorldThatNeverWas);
+    TWTNW = createWorldList(TheWorldThatNeverWas);
     var TWTNWcode = TheWorldThatNeverWas[Math.floor(Math.random() * 4)];
     var TWTNWproof = getProofs(TWTNW);
-    sortWorldLists(TWTNWproof, "The World That Never Was");
+    sortProofLocations(TWTNWproof, TWTNW, "The World That Never Was");
+    prioritizeWorld(TWTNWproof, "The World That Never Was");
     var TWTNWnumber = numberOfChecks(TWTNW);
 
-    var DF = createWorldList(Forms);
+    DF = createWorldList(Forms);
     var DFcode = Forms[Math.floor(Math.random() * 4)];
     var DFproof = getProofs(DF);
-    sortWorldLists(DFproof, "Drive Forms");
+    sortProofLocations(DFproof, DF, "Drive Forms");
+    prioritizeWorld(DFproof, "Drive Forms");
     var DFnumber = numberOfChecks(DF);
 
-    var LU = createWorldList(Levels);
+    LU = createWorldList(Levels);
     var LUcode = Levels[Math.floor(Math.random() * 4)];
     var LUproof = getProofs(LU);
-    sortWorldLists(LUproof, "Sora's Heart");
+    sortProofLocations(LUproof, LU, "Sora's Heart");
+    prioritizeWorld(LUproof, "Sora's Heart");
     var LUnumber = numberOfChecks(LU);
-    
+
     var Fcode = Free[Math.floor(Math.random() * 4)];
 
+    if(DFproof) {
+        prioritizeForms();
+    }
+
+    if(AWproof) {
+        prioritizePages();
+    }
+
+    if(ATproof) {
+        prioritizeAtlantica();
+    }
+    
     var worldChecks = {
         "100 Acre Wood" : AWnumber,
         "Atlantica" : ATnumber,
@@ -415,8 +535,7 @@ function createHints() {
         "Space Paranoids" : SPnumber,
         "The World That Never Was" : TWTNWnumber,
         "Drive Forms" : DFnumber,
-        "Sora's Heart" : LUnumber,
-        "Free" : Fcode
+        "Sora's Heart" : LUnumber
     }
 
     var codeChecks = {
@@ -436,12 +555,13 @@ function createHints() {
         "Space Paranoids" : SPcode,
         "The World That Never Was" : TWTNWcode,
         "Drive Forms" : DFcode,
-        "Sora's Heart" : LUcode 
+        "Sora's Heart" : LUcode,
+        "Free" : Fcode
     }
 
     shuffallworlds = shuffle(allworlds);
 
-    var worlds = proofLocations.concat(shuffallworlds);
+    var worlds = priorityWorlds.concat(shuffallworlds);
     var selectedworlds = [];
     for(var k = 0; k < 13; k++) {
         selectedworlds.push(worlds[k]);
@@ -454,10 +574,17 @@ function createHints() {
         reportLocations.push(findLocation(ansemReports[j]));
     }
 
-    if(document.getElementById('ReportOption').checked) {
+    //check for connection hint locked on terra or peace hint locked on shroom
+    selectedworlds = checkTerraShroomReports(selectedworlds);
+
+    //check that reports pointing to proofs are hinted
+    if(document.getElementById('reportsHinted').checked) {
+        selectedworlds = hintProofReports(selectedworlds);
+    }
+
+    if(high) {
         for(var i = 0; i < 13; i++) {
-            hints.push(writeHintReport(selectedworlds[i], worldChecks[selectedworlds[i]], i + 1, reportLocations[i + 1]));
-            savedhints.push(codeChecks[selectedworlds[i]] + "," + (worldChecks[selectedworlds[i]] + 32) + ".");
+            hints.push(writeHint(selectedworlds[i], 0));
         }
     }
     else {
@@ -467,11 +594,45 @@ function createHints() {
         }
     }
 
+    //Write saved hints files
     savedhints.push("\n");
     for(var i = 0; i < 13; i++) {
         savedhints.push(codeChecks[reportLocations[i]] + ".");
     }
 
+    savedhints.push("\n");
+    savedhints.push("Shared Hint Settings: - ");
+
+    if(document.getElementById('promisecharm').checked) {
+        savedhints.push("Promise Charm - ")
+    }
+    if(document.getElementById('abilities').checked) {
+        savedhints.push("Second Chance & Once More - ");
+    }
+    if(document.getElementById('page').checked) {
+        savedhints.push("Torn Pages - ");
+    }
+    if(document.getElementById('report').checked) {
+        savedhints.push("Secret Ansem Reports - ");
+    }
+    if(document.getElementById('cure').checked) {
+        savedhints.push("Cure - ")
+    }
+    if(document.getElementById('final').checked) {
+        savedhints.push("Final Form - ");
+    }
+    if(document.getElementById("Sora's Heart").checked) {
+        savedhints.push("Sora's Heart - ");
+    }
+    if(document.getElementById("Simulated Twilight Town").checked) {
+        savedhints.push("Simulated Twilight Town - ");
+    }
+    if(document.getElementById('100 Acre Wood').checked) {
+        savedhints.push("100 Acre Wood - ");
+    }
+    if(document.getElementById('Atlantica').checked) {
+        savedhints.push("Atlantica - ");
+    }
 }
 
 //Include or exclude category of items from key items
@@ -505,6 +666,10 @@ function include(id) {
                 keyItems.splice(index4, 1);
                 document.getElementById('abilities').disabled = true;
                 break;
+
+            case 'promisecharm':
+                keyItems = keyItems.concat(charm);
+                break;
         }
     }
     else {
@@ -532,6 +697,11 @@ function include(id) {
             case 'required':
                 keyItems = keyItemsDefault;
                 break;
+
+            case 'promisecharm':
+                var index = keyItems.indexOf(charm[0]);
+                keyItems.splice(index, 1);
+                break;
         }
     }
     console.log(keyItems);
@@ -558,22 +728,3 @@ function exclude(id) {
     }
     console.log(allworlds);
 }
-
-var allworlds = [
-    "100 Acre Wood", 
-    "Simulated Twilight Town", 
-    "Twilight Town", 
-    "Hollow Bastion", 
-    "Beast's Castle", 
-    "Olympus Coliseum", 
-    "Agrabah", 
-    "Land of Dragons", 
-    "Pride Lands",
-    "Disney Castle", 
-    "Halloween Town", 
-    "Port Royal", 
-    "Space Paranoids", 
-    "The World That Never Was", 
-    "Drive Forms", 
-    "Sora's Heart"
-];
