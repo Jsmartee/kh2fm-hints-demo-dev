@@ -276,3 +276,27 @@ a:visited {
 :root[theme="dark"] button.success:hover {
     background-color: hsl(140, 65%, 72%);
 }
+
+:root[theme="dark"] table {
+    text-align: center;
+    width: 50%;
+}
+
+:root[theme="dark"] .checklist table, .checklist th, .checklist td {
+    border: 1px solid white;
+    border-collapse: collapse;
+}
+
+:root[theme="dark"] .checklist td {
+    height: 300px;
+}
+
+:root[theme="dark"] select {
+    font-size: medium;
+    height: 100%;
+    width: 100%;
+}
+
+:root[theme="dark"] select option:hover {
+    background-color: #5299e0;
+}

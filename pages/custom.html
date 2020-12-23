@@ -6,13 +6,15 @@
         <title>KH2FMR Hints Demo Dev</title>
         <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="/css/style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script type="text/javascript" src="/js/main.js"></script>
         <script type="text/javascript" src="/js/logic.js"></script>
         <script type="text/javascript" src="/js/csv.js"></script>
         <script type="text/javascript" src="/js/codes.js"></script>
         <script type="text/javascript" src="/js/FileSaver.js"></script>
+        <script type="text/javascript" src="/js/menu.js"></script>
     </head>
-    <body>
+    <body onload="startMenu()">
         <h1>KH2FM Randomizer Hints Demo</h1>
 
         <div class="nav">
@@ -91,6 +93,69 @@
                 <li>Once More</li>
             </ul>
         </ul>
+
+        <div class="checklist">
+            <table>
+                <tr>
+                    <th>Item List</th>
+                    <th></th>
+                    <th>Important Checks</th>
+                </tr>
+                <tr>
+                    <td>
+                        <select id="listbox1" multiple="multiple">
+                            <option>Promise Charm</option>
+                            <option>Second Chance</option>
+                            <option>Once More</option>
+                            <option>Scan</option>
+                            <option>Aerial Recovery</option>
+                            <option>Combo Master</option>
+                            <option>Finishing Plus</option>
+                            <option>Negative Combo</option>
+                            <option>Berserk Charge</option>
+                            <option>Experience Boost</option>
+                            <option>Light and Darkness</option>
+                            <option>Guard</option>
+                            <option>Horizontal Slash</option>
+                            <option>Finishing Leap</option>
+                            <option>Slide Dash</option>
+                            <option>Guard Break</option>
+                            <option>Explosion</option>
+                            <option>Magnet Burst</option>
+                            <option>Trinity</option>
+                        </select>
+                    </td>
+                    <td>
+                        <button id="b1">Add >></button>
+                        <button id="b2"><< Remove</button>
+                    </td>
+                    <td>
+                        <select id="listbox2" multiple="multiple">
+                            <option>Proofs</option>
+                            <option>Valor Form</option>
+                            <option>Wisdom Form</option>
+                            <option>Limit Form</option>
+                            <option>Master Form</option>
+                            <option>Final Form</option>
+                            <option>Torn Pages</option>
+                            <option>Fire</option>
+                            <option>Blizzard</option>
+                            <option>Thunder</option>
+                            <option>Cure</option>
+                            <option>Reflect</option>
+                            <option>Magnet</option>
+                            <option>Chicken Little</option>
+                            <option>Genie</option>
+                            <option>Stitch</option>
+                            <option>Peter Pan</option>
+                            <option>Ansem Reports</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+
+            <!-- <p>Total Important Checks: <p id="total"></p></p> -->
+        </div>
         
         <p class="disclaimer">Coming Soon*</p>
 
@@ -107,7 +172,7 @@
         <hr>
 
         <footer>
-            <p id="update">Last updated: 12/21/20</p>
+            <p id="update">Last updated: 12/23/20</p>
             <p>Report any bugs or problems to Jsmartee#7416 on Discord.</p>
             <p>Feedback/suggestions are also welcome.</p>
         </footer>
