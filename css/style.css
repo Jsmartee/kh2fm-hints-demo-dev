@@ -211,6 +211,30 @@ a:visited {
       font-size: x-large;
   }
 
+table {
+    text-align: center;
+    width: 50%;
+}
+
+.checklist table, .checklist th, .checklist td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.checklist td {
+    height: 300px;
+}
+
+select {
+    font-size: medium;
+    height: 100%;
+    width: 100%;
+}
+
+select option:hover {
+    background-color: #5299e0;
+}
+
 @media screen and (max-width: 450px) {
     section {
         flex-direction: column;
