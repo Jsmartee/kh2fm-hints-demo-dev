@@ -20,9 +20,9 @@ var allworlds = [
 var priorityWorlds = [];
 //Prioritize worlds/locations with proofs and/or drive forms and/or torn pages
 function prioritizeWorld(item, worldName) {
-    if(!document.getElementById('proofsHinted').checked) {
-        return;
-    }
+    // if(!document.getElementById('proofsHinted').checked) {
+    //     return;
+    // }
     if(item && !priorityWorlds.includes(worldName)) {
         priorityWorlds.push(worldName);
         var index = allworlds.indexOf(worldName);
