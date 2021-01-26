@@ -34,13 +34,13 @@ var promise = {name: "Promise Charm", value: 1, code: "0000020C"};
 //support abilities
 var secondChance = {name: "Second Chance", value: 1, code: "0000019F"};
 var onceMore = {name: "Once More", value: 1, code: "000001A0"};
-var scan = {name: "Scan", value: 1, code: "0000008A"};
+var scan = {name: "Scan", value: 2, code: "0000008A"};
 var aerialRecovery = {name: "Aerial Recovery", value: 1, code: "0000009E"};
 var comboMaster = {name: "Combo Master", value: 1, code: "0000021B"};
-var finishingPlus = {name: "Finishing Plus", value: 1, code: "00000189"};
-var negativeCombo = {name: "Negative Combo", value: 1, code: "0000018A"};
-var berserkCharge = {name: "Berserk Charge", value: 1, code: "0000018B"};
-var experienceBoost = {name: "Experience Boost", value: 1, code: "00000191"};
+var finishingPlus = {name: "Finishing Plus", value: 3, code: "00000189"};
+var negativeCombo = {name: "Negative Combo", value: 2, code: "0000018A"};
+var berserkCharge = {name: "Berserk Charge", value: 2, code: "0000018B"};
+var experienceBoost = {name: "Experience Boost", value: 2, code: "00000191"};
 var lightAndDarkness = {name: "Light and Darkness", value: 1, code: "0000021D"};
 
 //action abilities
@@ -74,3 +74,5 @@ var munny = ["0000016A", "00000217"];
 var munnyPouch = {name: "Munny Pouch", value: 2, code: munny};
 
 var membershipCard = {name: "Membership Card", value: 1, code: "00000171"};
+
+var hadesCup = {name: "Hades Cup Trophy", value: 1, code: "00000219"};

@@ -149,7 +149,7 @@ function generateCustom() {
     }
 
     else if(importantChecks < 45) {
-        alert("Total Important Checks must be at least 45.");
+        alert("There must be at least 45 total important checks.");
     }
     else {
         for(var i = 0; i < selectedImportChecks.options.length; i++) {
