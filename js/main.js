@@ -56,8 +56,8 @@ function start() {
     document.getElementById('100 Acre Wood').checked = true;
     document.getElementById('Atlantica').checked = false;
 
-    document.getElementById('proofsHinted').checked = true;
-    document.getElementById('reportsHinted').checked = true;
+    // document.getElementById('proofsHinted').checked = true;
+    // document.getElementById('reportsHinted').checked = true;
 }
   
 function generate() {
@@ -77,14 +77,16 @@ function generate() {
         document.getElementById('100 Acre Wood').disabled = true;
         document.getElementById('Atlantica').disabled = true;
 
-        document.getElementById('proofsHinted').disabled = true;
-        document.getElementById('reportsHinted').disabled = true;
+        // document.getElementById('proofsHinted').disabled = true;
+        // document.getElementById('reportsHinted').disabled = true;
 
         for(var i = 1; i < 14; i++) {
             document.getElementById('report-' + i).innerHTML = "Click to reveal hint";
         }
         getLists(keyItems);
-        createHints();
+        createHints(keyItems);
+        saveHintSettings();
+
         var seedName = dataArray[0].toString().split('');
         seed = seedName[3].concat(seedName[4], seedName[5], seedName[6]);
     }
@@ -143,8 +145,8 @@ function uploadHints(button) {
         document.getElementById('100 Acre Wood').disabled = true;
         document.getElementById('Atlantica').disabled = true;
 
-        document.getElementById('proofsHinted').disabled = true;
-        document.getElementById('reportsHinted').disabled = true;
+        // document.getElementById('proofsHinted').disabled = true;
+        // document.getElementById('reportsHinted').disabled = true;
     }
 
     for(var i = 1; i < 14; i++) {
@@ -577,7 +579,11 @@ function createHints(impCheckList) {
 
     //get report locations
     for(var j = 0; j < ansemReports.length; j++) {
-        reportLocations.push(findLocation(ansemReports[j]));
+        var reportPlacement = findLocation(ansemReports[j]);
+        if(reportPlacement === undefined) {
+            reportPlacement = vanillaReports[j];
+        }
+        reportLocations.push(reportPlacement);
     }
 
     //check for connection hint locked on terra or peace hint locked on shroom
@@ -607,40 +613,42 @@ function createHints(impCheckList) {
     for(var i = 0; i < 13; i++) {
         savedhints.push(codeChecks[reportLocations[i]] + ".");
     }
+}
 
+function saveHintSettings() {
     savedhints.push("\n");
     savedhints.push("Shared Hint Settings: - ");
 
-    // if(document.getElementById('promisecharm').checked) {
-    //     savedhints.push("Promise Charm - ")
-    // }
-    // if(document.getElementById('abilities').checked) {
-    //     savedhints.push("Second Chance & Once More - ");
-    // }
-    // if(document.getElementById('page').checked) {
-    //     savedhints.push("Torn Pages - ");
-    // }
-    // if(document.getElementById('report').checked) {
-    //     savedhints.push("Secret Ansem Reports - ");
-    // }
-    // if(document.getElementById('cure').checked) {
-    //     savedhints.push("Cure - ")
-    // }
-    // if(document.getElementById('final').checked) {
-    //     savedhints.push("Final Form - ");
-    // }
-    // if(document.getElementById("Sora's Heart").checked) {
-    //     savedhints.push("Sora's Heart - ");
-    // }
-    // if(document.getElementById("Simulated Twilight Town").checked) {
-    //     savedhints.push("Simulated Twilight Town - ");
-    // }
-    // if(document.getElementById('100 Acre Wood').checked) {
-    //     savedhints.push("100 Acre Wood - ");
-    // }
-    // if(document.getElementById('Atlantica').checked) {
-    //     savedhints.push("Atlantica - ");
-    // }
+    if(document.getElementById('promisecharm').checked) {
+        savedhints.push("Promise Charm - ")
+    }
+    if(document.getElementById('abilities').checked) {
+        savedhints.push("Second Chance & Once More - ");
+    }
+    if(document.getElementById('page').checked) {
+        savedhints.push("Torn Pages - ");
+    }
+    if(document.getElementById('report').checked) {
+        savedhints.push("Secret Ansem Reports - ");
+    }
+    if(document.getElementById('cure').checked) {
+        savedhints.push("Cure - ")
+    }
+    if(document.getElementById('final').checked) {
+        savedhints.push("Final Form - ");
+    }
+    if(document.getElementById("Sora's Heart").checked) {
+        savedhints.push("Sora's Heart - ");
+    }
+    if(document.getElementById("Simulated Twilight Town").checked) {
+        savedhints.push("Simulated Twilight Town - ");
+    }
+    if(document.getElementById('100 Acre Wood').checked) {
+        savedhints.push("100 Acre Wood - ");
+    }
+    if(document.getElementById('Atlantica').checked) {
+        savedhints.push("Atlantica - ");
+    }
 }
 
 //Include or exclude category of items from key items

@@ -21,28 +21,31 @@
                 <li><a class="active" href="original.html">Hint Generator (Dev)</a></li>
                 <!-- <li><a href="report.html">Report Items System</a></li> -->
                 <!-- <li><a href="score.html">Point Based System (Coming Soon)</a></li> -->
-                <li><a href="custom.html">Customizable Pool (Coming Soon*)</a></li>
+                <!-- <li><a href="custom.html">Customizable Pool (Coming Soon*)</a></li> -->
                 <li><a href="changelog.html">Changelog</a></li>
               </ul>
         </div>
 
         <p class="disclaimer">! This is a dev build of the hints generator. To use the stable version, go here: <a href="https://jsmartee.github.io/kh2fm-hints-demo/">Hint Generator</a></p>
 
-        <p>This build is identical to the main build with a few additional features. <br>
-            Please report any bugs or issues to Jsmartee#7416 on Discord. Suggestions are also welcome.</p>
+        <p>This build is identical to the main build with features to be tested. <br>
+            Please report any bugs or issues to Jsmartee#7416 on Discord (Ping or DM). Suggestions are also welcome.</p>
         
         <p>Features:</p>
         <ul>
-            <li>Toggles for different aspects of the logic</li>
+            <li>Do not allow proofs to be self hinted.</li>
+            <li>Ex: If there's a proof in Space Paranoids and Report 3 hints Space Paranoids, then Report 3 cannot be in Space Paranoids.</li>
+            <li>Priority is still: Proofs > Drive Forms > Torn Pages > (Thunder then Magnet if Atlantica is on and has a Proof)</li>
+            <li>Therefore if the Proofs, Forms, and Pages (and Magic) are already taking up 13 hints, there will possibly be no hinted hints if everything is in a different world.</li>
         </ul>
 
         <p>Planned:</p>
         <ul>
             <li>Prevent worlds from having their own hints.</li>
                 <ul>
-                    <li>Allow only for 1st visits.</li>
+                    <li>Allow only for 1st visits?</li>
                 </ul>
-            <li>Hints for torn pages should not be in 100 Acre Wood.</li>
+            <li>Hints for torn pages should not be in 100 Acre Wood past Pooh's House.</li>
         </ul>
 
         <br>
@@ -85,7 +88,7 @@
                     </div>
                 </div> -->
 
-                <div>
+                <!-- <div>
                     <p>Logic:</p>
 
                     <div class="row">
@@ -103,7 +106,7 @@
                         </label>
                         <p>Reports for Proofs Must Be Hinted</p>
                     </div>
-                </div>
+                </div> -->
 
                 <div id="include">
                     <p>Important Checks:</p>
@@ -631,7 +634,7 @@
         <hr>
 
         <footer>
-            <p id="update">Last updated: 1/26/21</p>
+            <p id="update">Last updated: 2/13/21</p>
             <p>Report any bugs or problems to Jsmartee#7416 on Discord.</p>
             <p>Feedback/suggestions are also welcome.</p>
         </footer>
