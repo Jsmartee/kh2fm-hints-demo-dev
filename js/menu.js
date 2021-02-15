@@ -191,7 +191,7 @@ function generateCustom() {
         }
 
         getLists();
-        createHints(customKeyItems);
+        createHints(customKeyItems, "Custom");
         var seedName = dataArray[0].toString().split('');
         seed = seedName[3].concat(seedName[4], seedName[5], seedName[6]);
 

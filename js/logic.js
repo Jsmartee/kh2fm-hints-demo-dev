@@ -371,7 +371,65 @@ var terraHint;
 
 var selfHint;
 
+//Check for Reports on Terra and Shroom
+//ORIGINAL BUILD
 function checkTerraShroomReports(worlds) {
+    var hintedWorlds = worlds;
+
+    if(reportLocationCodes.includes("11CE0B16")) {
+        terraReport = true;
+        var indexTerra1 = reportLocationCodes.indexOf("11CE0B16");
+        if(hintedWorlds[indexTerra1] === proofLocations[0]) {
+            terraHint = true;
+        }
+    }
+    if(reportLocationCodes.includes("11CE0B22")) {
+        terraReport = true;
+        var indexTerra2 = reportLocationCodes.indexOf("11CE0B22");
+        if(hintedWorlds[indexTerra2] === proofLocations[0]) {
+            terraHint = true;
+        }
+    }
+    if(reportLocationCodes.includes("11CE0B3A")) {
+        shroomReport = true;
+        var indexShroom1 = reportLocationCodes.indexOf("11CE0B3A");
+        if(hintedWorlds[indexShroom1] === proofLocations[2]) {
+            shroomHint = true;
+        }
+    }
+    if(reportLocationCodes.includes("11CE0B2E")) {
+        shroomReport = true;
+        var indexShroom2 = reportLocationCodes.indexOf("11CE0B2E");
+        if(hintedWorlds[indexShroom2] === proofLocations[2]) {
+            shroomHint = true;
+        }
+    }
+
+    if(terraHint || shroomHint) {
+        while(terraHint || shroomHint) {
+            hintedWorlds = shuffle(hintedWorlds);
+            if(hintedWorlds[indexTerra1] === proofLocations[0] || hintedWorlds[indexTerra2] === proofLocations[0]) {
+                terraHint = true;
+            }
+            else {
+                terraHint = false;
+            }
+            if(hintedWorlds[indexShroom1] === proofLocations[2] || hintedWorlds[indexShroom2] === proofLocations[2]) {
+                shroomHint = true;
+            }
+            else {
+                shroomHint = false;
+            }
+            console.log("reshuffle");
+        }
+    }
+
+    return hintedWorlds;
+}
+
+//Check for Reports on Terra and Shroom and check for Self Hinted proofs
+//FOR TEST BUILD
+function checkTerraShroomReportsSelfHint(worlds) {
     var hintedWorlds = worlds;
 
     selfHint = checkSelfHintedProof(worlds);

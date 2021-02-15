@@ -84,7 +84,7 @@ function generate() {
             document.getElementById('report-' + i).innerHTML = "Click to reveal hint";
         }
         getLists(keyItems);
-        createHints(keyItems);
+        createHints(keyItems, "Original");
         saveHintSettings();
 
         var seedName = dataArray[0].toString().split('');
@@ -174,7 +174,7 @@ function getLists() {
       var row = item.split(',');
       locationList.push(row[2]);
       rewardList.push(row[4]);
-      if(row[0] === "//Remove High Jump LVl") {
+      if(row[0] === "//Remove High Jump LVl" || row[0] === "//Remove Quick Run LVl") {
           high = true;
       }
     }
@@ -385,7 +385,9 @@ var TWTNW;
 var DF;
 var LU;
 
-function createHints(impCheckList) {
+function createHints(impCheckList, build) {
+    var buildName = build;
+
     //create list of rewards in world
     //select random code to be ID for world
     //see if proof is in world
@@ -586,8 +588,14 @@ function createHints(impCheckList) {
         reportLocations.push(reportPlacement);
     }
 
+    console.log(buildName);
     //check for connection hint locked on terra or peace hint locked on shroom
-    selectedworlds = checkTerraShroomReports(selectedworlds);
+    if(buildName === "Original") {
+        selectedworlds = checkTerraShroomReportsSelfHint(selectedworlds);
+    }
+    else {
+        selectedworlds = checkTerraShroomReports(selectedworlds);
+    }
 
     //check that reports pointing to proofs are hinted
     selectedworlds = hintProofReports(selectedworlds);
