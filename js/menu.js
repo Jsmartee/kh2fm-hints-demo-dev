@@ -148,8 +148,8 @@ function generateCustom() {
         document.getElementById('confirmGen').innerHTML = "Please select a seed to generate hints.";
     }
 
-    else if(importantChecks < 45) {
-        alert("There must be at least 45 total important checks.");
+    else if(importantChecks < 30) {
+        alert("There must be at least 30 total important checks.");
     }
     else {
         for(var i = 0; i < selectedImportChecks.options.length; i++) {

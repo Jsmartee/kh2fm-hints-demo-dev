@@ -76,3 +76,9 @@ var munnyPouch = {name: "Munny Pouch", value: 2, code: munny};
 var membershipCard = {name: "Membership Card", value: 1, code: "00000171"};
 
 var hadesCup = {name: "Hades Cup Trophy", value: 1, code: "00000219"};
+
+// //donald and goofy abilities
+// var fantasia = {name: "Fantasia (Comet)", value: 1, code: "000000C7"};
+// var duckFlare = {name: "Flare Force (Duck Flare)", value: 1, code: "000000C8"};
+// var tornadoFusion = {name: "Tornado Fusion (Whirli-Goof)", value: 1, code: "000000C9"};
+// var teamwork = {name: "Teamwork (Knocksmash)", value: 1, code: "000000CA"};
