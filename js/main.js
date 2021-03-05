@@ -11,7 +11,16 @@ var alllists = [];
 var worlds = [];
 var worldAndList = [];
 
+function update() {
+    var updates = document.getElementsByClassName('update');
+    for(var i = 0; i < updates.length; i++) {
+        updates[i].innerHTML = "Last Updated 3/4/21";
+    }
+}
+
 function start() {
+    update();
+
     alllists.push(AcreWood, SimulatedTwilightTown, TwilightTown, HollowBastion, BeastsCastle, 
         OlympusColiseum, Agrabah, LandOfDragons, PrideLands, DisneyCastle, 
         HalloweenTown, PortRoyal, SpaceParanoids, TheWorldThatNeverWas, Forms, Levels, Atlantica, Free);
@@ -180,7 +189,7 @@ function getLists() {
     }
 }
 
-var tries = [0,0,0,0,0,0,0,0,0,0,0,0,0];
+var tries = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 
 function reveal(id) {
     if(dataArray.length === 0) {
@@ -590,7 +599,7 @@ function createHints(impCheckList, build) {
 
     console.log(buildName);
     //check for connection hint locked on terra or peace hint locked on shroom
-    if(buildName === "Original") {
+    if(buildName === "Original" && document.getElementById("selfHintProofs").checked) {
         selectedworlds = checkTerraShroomReportsSelfHint(selectedworlds);
     }
     else {
@@ -616,6 +625,28 @@ function createHints(impCheckList, build) {
         }
     }
 
+    if(buildName === "Original") {
+        if(document.getElementById("proofHints").checked) {
+            reportLocations.push(proofLocations[0]);
+            reportLocations.push(proofLocations[1]);
+            reportLocations.push(proofLocations[2]);
+    
+            hints.push(writeHint(worlds[13], worldChecks[worlds[13]]));
+            savedhints.push(codeChecks[worlds[13]] + "," + (worldChecks[worlds[i]] + 32) + ".");
+            
+            hints.push(writeHint(worlds[14], worldChecks[worlds[14]]));
+            savedhints.push(codeChecks[worlds[14]] + "," + (worldChecks[worlds[i]] + 32) + ".");
+    
+            hints.push(writeHint(worlds[15], worldChecks[worlds[15]]));
+            savedhints.push(codeChecks[worlds[15]] + "," + (worldChecks[worlds[i]] + 32) + ".");
+        }
+        else {
+            document.getElementById("14").disabled = true;
+            document.getElementById("15").disabled = true;
+            document.getElementById("16").disabled = true;
+        }
+    }
+    
     //Write saved hints files
     savedhints.push("\n");
     for(var i = 0; i < 13; i++) {

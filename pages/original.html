@@ -20,8 +20,8 @@
                 <li><a href="../index.html">Home</a></li>
                 <li><a class="active" href="original.html">Hint Generator (Dev)</a></li>
                 <!-- <li><a href="report.html">Report Items System</a></li> -->
-                <!-- <li><a href="score.html">Point Based System (Coming Soon)</a></li> -->
                 <li><a href="custom.html">Customizable Pool</a></li>
+                <li><a href="score.html">Point Based System (Coming Soon)</a></li>
                 <li><a href="changelog.html">Changelog</a></li>
               </ul>
         </div>
@@ -34,9 +34,16 @@
         <p>Features:</p>
         <ul>
             <li>Do not allow proofs to be self hinted.</li>
-            <li>Ex: If there's a proof in Space Paranoids and Report 3 hints Space Paranoids, then Report 3 cannot be in Space Paranoids.</li>
-            <li>Priority is still: Proofs > Drive Forms > Torn Pages > (Thunder then Magnet if Atlantica is on and has a Proof)</li>
-            <li>Therefore if the Proofs, Forms, and Pages (and Magic) are already taking up 13 hints, there will possibly be no hinted hints if everything is in a different world.</li>
+            <ul>
+                <li>Ex: If there's a proof in Space Paranoids and Report 3 hints Space Paranoids, then Report 3 cannot be in Space Paranoids.</li>
+                <li>Priority is still: Proofs > Drive Forms > Torn Pages > (Thunder then Magnet if Atlantica is on and has a Proof)</li>
+                <li>Therefore if the Proofs, Forms, and Pages (and Magic) are already taking up 13 hints, there will possibly be no hinted hints if everything is in a different world.</li>
+            </ul>
+
+            <li>Proofs give hints for unused worlds.</li>
+            <ul>
+                <li>Logic stays the same</li>
+            </ul>
         </ul>
 
         <p>Planned:</p>
@@ -76,37 +83,25 @@
             <p>Select a seed and click the Generate Hints button. The seed needs to be a pnach file.</p>
 
             <div>
-                <!-- <div>
-                    <p>Toggle below for each report to hint towards the location of the next report.</p>
-
-                    <div class="row">
-                        <label class="switch">
-                            <input type="checkbox" checked="false" id="ReportOption"/>
-                            <span class="slider"></span>
-                        </label>
-                        <p>Hint Next Report Location</p>
-                    </div>
-                </div> -->
-
-                <!-- <div>
+                <div>
                     <p>Logic:</p>
 
                     <div class="row">
                         <label class="switch">
-                            <input type="checkbox" checked="true" id="proofsHinted">
+                            <input type="checkbox" checked="false" id="selfHintProofs"/>
                             <span class="slider"></span>
                         </label>
-                        <p>Proofs Must Be Hinted</p>
+                        <p>Prevent Self Hinted Proofs</p>
                     </div>
 
                     <div class="row">
                         <label class="switch">
-                            <input type="checkbox" checked="true" id="reportsHinted">
+                            <input type="checkbox" checked="false" id="proofHints"/>
                             <span class="slider"></span>
                         </label>
-                        <p>Reports for Proofs Must Be Hinted</p>
+                        <p>Proofs Give Hints</p>
                     </div>
-                </div> -->
+                </div>
 
                 <div id="include">
                     <p>Important Checks:</p>
@@ -206,7 +201,7 @@
                 <input style="display: none" type="file" id="textFileInput" onchange="handleFiles(this, this.files)" accept=".txt">
                 <span style="margin-left: 5px"></span>
                 </p>
-                <p><button id="upload-btn" onclick="uploadHints()">Upload Hints</button></p>
+                <p><button id="upload-btn" onclick="uploadHints(this.id)">Upload Hints</button></p>
 
                 <p class="confirm" id="confirmShare">No hints have been generated yet.</p>
 
@@ -628,13 +623,107 @@
                         <p id="report-13">Click to reveal hint</p>
                     </td>
                 </tr>
+
+                <tr>
+                    <td>
+                        <button id="14" onclick="reveal(this.id)">Proof of Connection</button>
+                    </td>
+                    <td>
+                        <select id="report-14-location">
+                            <option value="Not Found Yet">Not Found Yet</option>
+                            <option value="Twilight Town">Twilight Town</option>
+                            <option value="Hollow Bastion">Hollow Bastion</option>
+                            <option value="Agrabah">Agrabah</option>
+                            <option value="Beast's Castle">Beast's Castle</option>
+                            <option value="Disney Castle">Disney Castle</option>
+                            <option value="Drive Forms">Drive Forms</option>
+                            <option value="Halloween Town">Halloween Town</option>
+                            <option value="Land of Dragons">Land of Dragons</option>
+                            <option value="Sora's Heart">Levels</option>
+                            <option value="Olympus Coliseum">Olympus Coliseum</option>
+                            <option value="Port Royal">Port Royal</option>
+                            <option value="Pride Lands">Pride Lands</option>
+                            <option value="Space Paranoids">Space Paranoids</option>
+                            <option value="The World That Never Was">TWTNW</option>
+                            <option value="Free">GoA/Critical Extra</option>
+                            <option value="Simulated Twilight Town">Simulated Twilight Town</option>
+                            <option value="100 Acre Wood">100 Acre Wood</option>
+                            <option value="Atlantica">Atlantica</option>
+                        </select>
+                    </td>
+                    <td>
+                        <p id="report-14">Click to reveal hint</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button id="15" onclick="reveal(this.id)">Proof of Nonexistence</button>
+                    </td>
+                    <td>
+                        <select id="report-15-location">
+                            <option value="Not Found Yet">Not Found Yet</option>
+                            <option value="Twilight Town">Twilight Town</option>
+                            <option value="Hollow Bastion">Hollow Bastion</option>
+                            <option value="Agrabah">Agrabah</option>
+                            <option value="Beast's Castle">Beast's Castle</option>
+                            <option value="Disney Castle">Disney Castle</option>
+                            <option value="Drive Forms">Drive Forms</option>
+                            <option value="Halloween Town">Halloween Town</option>
+                            <option value="Land of Dragons">Land of Dragons</option>
+                            <option value="Sora's Heart">Levels</option>
+                            <option value="Olympus Coliseum">Olympus Coliseum</option>
+                            <option value="Port Royal">Port Royal</option>
+                            <option value="Pride Lands">Pride Lands</option>
+                            <option value="Space Paranoids">Space Paranoids</option>
+                            <option value="The World That Never Was">TWTNW</option>
+                            <option value="Free">GoA/Critical Extra</option>
+                            <option value="Simulated Twilight Town">Simulated Twilight Town</option>
+                            <option value="100 Acre Wood">100 Acre Wood</option>
+                            <option value="Atlantica">Atlantica</option>
+                        </select>
+                    </td>
+                    <td>
+                        <p id="report-15">Click to reveal hint</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button id="16" onclick="reveal(this.id)">Proof of Peace</button>
+                    </td>
+                    <td>
+                        <select id="report-16-location">
+                            <option value="Not Found Yet">Not Found Yet</option>
+                            <option value="Twilight Town">Twilight Town</option>
+                            <option value="Hollow Bastion">Hollow Bastion</option>
+                            <option value="Agrabah">Agrabah</option>
+                            <option value="Beast's Castle">Beast's Castle</option>
+                            <option value="Disney Castle">Disney Castle</option>
+                            <option value="Drive Forms">Drive Forms</option>
+                            <option value="Halloween Town">Halloween Town</option>
+                            <option value="Land of Dragons">Land of Dragons</option>
+                            <option value="Sora's Heart">Levels</option>
+                            <option value="Olympus Coliseum">Olympus Coliseum</option>
+                            <option value="Port Royal">Port Royal</option>
+                            <option value="Pride Lands">Pride Lands</option>
+                            <option value="Space Paranoids">Space Paranoids</option>
+                            <option value="The World That Never Was">TWTNW</option>
+                            <option value="Free">GoA/Critical Extra</option>
+                            <option value="Simulated Twilight Town">Simulated Twilight Town</option>
+                            <option value="100 Acre Wood">100 Acre Wood</option>
+                            <option value="Atlantica">Atlantica</option>
+                        </select>
+                    </td>
+                    <td>
+                        <p id="report-16">Click to reveal hint</p>
+                    </td>
+                </tr>
             </table>
         </div>
 
         <hr>
 
         <footer>
-            <p id="update">Last updated: 2/22/21</p>
+            <p class="update"></p>
             <p>Report any bugs or problems to Jsmartee#7416 on Discord.</p>
             <p>Feedback/suggestions are also welcome.</p>
         </footer>

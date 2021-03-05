@@ -2,6 +2,8 @@ var checklist = [];
 var importantChecks;
 
 function startMenu() {
+    update();
+    
     alllists.push(AcreWood, SimulatedTwilightTown, TwilightTown, HollowBastion, BeastsCastle, 
         OlympusColiseum, Agrabah, LandOfDragons, PrideLands, DisneyCastle, 
         HalloweenTown, PortRoyal, SpaceParanoids, TheWorldThatNeverWas, Forms, Levels, Atlantica, Free);

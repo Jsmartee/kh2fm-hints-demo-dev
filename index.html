@@ -6,8 +6,9 @@
         <title>KH2FMR Hints Demo Dev</title>
         <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="css/style.css">
+        <script type="text/javascript" src="../js/main.js"></script>
     </head>
-    <body>
+    <body onload="update()">
         <h1>KH2FM Randomizer Hints Demo</h1>
 
         <div class="nav">
@@ -15,8 +16,8 @@
                 <li><a class="active" href="index.html">Home</a></li>
                 <li><a href="pages/original.html">Hint Generator (Dev)</a></li>
                 <!-- <li><a href="pages/report.html">Report Items System</a></li> -->
-                <!-- <li><a href="pages/score.html">Point Based System (Coming Soon)</a></li> -->
                 <li><a href="pages/custom.html">Customizable Pool</a></li>
+                <li><a href="pages/score.html">Point Based System (Coming Soon)</a></li>
                 <li><a href="pages/changelog.html">Changelog</a></li>
               </ul>
         </div>
@@ -38,6 +39,10 @@
                 <ul>
                     <li>Fully customizable pool of important checks</li>
                 </ul>
+                <li>Point Based System (Coming Soon*)</li>
+                <ul>
+                    <li>Based on CrescentRR's GoARacle where important checks have points and hints give a world's point value</li>
+                </ul>
             </ul>
         </p>
 
@@ -46,9 +51,11 @@
                 <li>If reports pointing to proofs are on drive forms, hint all forms</li>
                 <li>If reports pointing to proofs is in 100 Acre Wood, hint all pages</li>
                 <li>Prevent worlds from having their own hints</li>
-                <li>Point based system based on CrescentRR's GoARacle where important checks have points and hints give a world's point value</li>
+                <strike><li>Point based system based on CrescentRR's GoARacle where important checks have points and hints give a world's point value</li></strike>
                 <strike><li>Popout window for hints</li></strike>
                 <li>Hints for torn pages should not be in 100 Acre Wood</li>
+                <strike><li>Have proofs give hints for 3 unused worlds (does not change logic)</li></strike>
+                <li>Seperate Timeless River from Disney Castle and Cavern of Remembrance from Hollow Bastion</li>
             </ul>
         </p>
 
@@ -63,7 +70,7 @@
         <hr>
 
         <footer>
-            <p id="update">Last updated: 2/22/21</p>
+            <p class="update"></p>
             <p>Report any bugs or problems to Jsmartee#7416 on Discord.</p>
             <p>Feedback/suggestions are also welcome.</p>
         </footer>
