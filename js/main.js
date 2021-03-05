@@ -14,7 +14,7 @@ var worldAndList = [];
 function update() {
     var updates = document.getElementsByClassName('update');
     for(var i = 0; i < updates.length; i++) {
-        updates[i].innerHTML = "Last Updated 3/4/21";
+        updates[i].innerHTML = "Last Updated 3/5/21";
     }
 }
 
@@ -609,10 +609,6 @@ function createHints(impCheckList, build) {
     //check that reports pointing to proofs are hinted
     selectedworlds = hintProofReports(selectedworlds);
 
-    // if(document.getElementById('reportsHinted').checked) {
-    //     selectedworlds = hintProofReports(selectedworlds);
-    // }
-
     if(high) {
         for(var i = 0; i < 13; i++) {
             hints.push(writeHint(selectedworlds[i], 0));
@@ -625,20 +621,29 @@ function createHints(impCheckList, build) {
         }
     }
 
+    //Let proofs give hints for up to 3 unused worlds
     if(buildName === "Original") {
         if(document.getElementById("proofHints").checked) {
             reportLocations.push(proofLocations[0]);
             reportLocations.push(proofLocations[1]);
             reportLocations.push(proofLocations[2]);
+
+            var unusedWorlds = [];
+
+            for(var i = 0; i < allworlds.length; i++) {
+                if(!selectedworlds.includes(allworlds[i])) {
+                    unusedWorlds.push(allworlds[i]);
+                }
+            }
     
-            hints.push(writeHint(worlds[13], worldChecks[worlds[13]]));
-            savedhints.push(codeChecks[worlds[13]] + "," + (worldChecks[worlds[i]] + 32) + ".");
+            hints.push(writeHint(unusedWorlds[0], worldChecks[unusedWorlds[0]]));
+            savedhints.push(codeChecks[unusedWorlds[0]] + "," + (worldChecks[unusedWorlds[0]] + 32) + ".");
             
-            hints.push(writeHint(worlds[14], worldChecks[worlds[14]]));
-            savedhints.push(codeChecks[worlds[14]] + "," + (worldChecks[worlds[i]] + 32) + ".");
+            hints.push(writeHint(unusedWorlds[1], worldChecks[unusedWorlds[1]]));
+            savedhints.push(codeChecks[unusedWorlds[1]] + "," + (worldChecks[unusedWorlds[1]] + 32) + ".");
     
-            hints.push(writeHint(worlds[15], worldChecks[worlds[15]]));
-            savedhints.push(codeChecks[worlds[15]] + "," + (worldChecks[worlds[i]] + 32) + ".");
+            hints.push(writeHint(unusedWorlds[2], worldChecks[unusedWorlds[2]]));
+            savedhints.push(codeChecks[unusedWorlds[2]] + "," + (worldChecks[unusedWorlds[2]] + 32) + ".");
         }
         else {
             document.getElementById("14").disabled = true;
@@ -651,6 +656,15 @@ function createHints(impCheckList, build) {
     savedhints.push("\n");
     for(var i = 0; i < 13; i++) {
         savedhints.push(codeChecks[reportLocations[i]] + ".");
+    }
+
+    //Add in proof locations to hint files for proofs giving hints
+    if(buildName === "Original") {
+        if(document.getElementById("proofHints").checked) {
+            savedhints.push(codeChecks[reportLocations[13]] + ".");
+            savedhints.push(codeChecks[reportLocations[14]] + ".");
+            savedhints.push(codeChecks[reportLocations[15]] + ".");
+        }
     }
 }
 

@@ -529,6 +529,7 @@ function hintProofReports(worlds) {
                         hintedWorlds[index] = reportProof1;
                         priorityWorldIndex = false;
                         priorityWorlds2.push(reportProof1);
+                        console.log("resufflerep");
                     }
                     else {
                         priorityWorldIndex = true;
@@ -549,6 +550,7 @@ function hintProofReports(worlds) {
                         hintedWorlds[index] = reportProof2;
                         priorityWorldIndex = false;
                         priorityWorlds2.push(reportProof2);
+                        console.log("resufflerep");
                     }
                     else {
                         priorityWorldIndex = true;
@@ -568,6 +570,7 @@ function hintProofReports(worlds) {
                         hintedWorlds[index] = reportProof3;
                         priorityWorldIndex = false;
                         priorityWorlds2.push(reportProof3);
+                        console.log("resufflerep");
                     }
                     else {
                         priorityWorldIndex = true;
