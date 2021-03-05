@@ -84,7 +84,8 @@ function startMenu() {
         aerialDodge,
         glide,
         munnyPouch,
-        membershipCard);
+        membershipCard,
+        hadesCup);
 
     console.log(checklist);
 }
