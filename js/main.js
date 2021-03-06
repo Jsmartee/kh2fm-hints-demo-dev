@@ -523,7 +523,10 @@ function createHints(impCheckList, build) {
     prioritizeWorld(LUproof, "Sora's Heart");
     var LUnumber = numberOfChecks(LU, impCheckList);
 
+    freeList = createWorldList(Free);
     var Fcode = Free[Math.floor(Math.random() * 4)];
+    var freeProof = getProofs(freeList);
+    sortProofLocations(freeProof, freeList, "Free");
 
     if(DFproof) {
         prioritizeForms();
@@ -644,6 +647,10 @@ function createHints(impCheckList, build) {
     
             hints.push(writeHint(unusedWorlds[2], worldChecks[unusedWorlds[2]]));
             savedhints.push(codeChecks[unusedWorlds[2]] + "," + (worldChecks[unusedWorlds[2]] + 32) + ".");
+
+            console.log(proofLocations);
+            console.log(reportLocations);
+            console.log(Fcode);
         }
         else {
             document.getElementById("14").disabled = true;
