@@ -375,6 +375,7 @@ var selfHint;
 //ORIGINAL BUILD
 function checkTerraShroomReports(worlds) {
     var hintedWorlds = worlds;
+    console.log("ogCondition");
 
     if(reportLocationCodes.includes("11CE0B16")) {
         terraReport = true;
@@ -431,8 +432,10 @@ function checkTerraShroomReports(worlds) {
 //FOR TEST BUILD
 function checkTerraShroomReportsSelfHint(worlds) {
     var hintedWorlds = worlds;
+    console.log("testCondition");
 
     selfHint = checkSelfHintedProof(worlds);
+    console.log(selfHint);
 
     if(reportLocationCodes.includes("11CE0B16")) {
         terraReport = true;
@@ -585,38 +588,46 @@ function hintProofReports(worlds) {
     return hintedWorlds;
 }
 
-//Make sure hint for proof isn't in the same world as the proof
+//DISCONTINUED: Make sure hint for proof isn't in the same world as the proof
+//Check if any world is self hinted
 function checkSelfHintedProof(worlds) {
     var hintedWorlds = worlds;
 
-    //get indexes of reports pointing to proofs
-    var proofReportIndexes = ["proofReport1", "proofReport2", "proofReport3"];
-    var proofReportLocations = ["proofReport1", "proofReport2", "proofReport3"];
+    // //get indexes of reports pointing to proofs
+    // var proofReportIndexes = ["proofReport1", "proofReport2", "proofReport3"];
+    // var proofReportLocations = ["proofReport1", "proofReport2", "proofReport3"];
+
+    // for(var i = 0; i < hintedWorlds.length; i++) {
+    //     if(hintedWorlds[i] === proofLocations[0]) {
+    //         proofReportIndexes[0] = i;
+    //     }
+    //     if(hintedWorlds[i] === proofLocations[1]) {
+    //         proofReportIndexes[1] = i;
+    //     }
+    //     if(hintedWorlds[i] === proofLocations[2]) {
+    //         proofReportIndexes[2] = i;
+    //     }
+    // }
+
+    // proofReportLocations[0] = reportLocations[proofReportIndexes[0]];
+    // proofReportLocations[1] = reportLocations[proofReportIndexes[1]];
+    // proofReportLocations[2] = reportLocations[proofReportIndexes[2]];
+
+    // if(proofReportLocations[0] === proofLocations[0] || proofReportLocations[1] === proofLocations[1] || proofReportLocations[2] === proofLocations[2]) {
+    //     return true;
+    // }
+    // else {
+    //     return false;
+    // }
+
+    var selfHint = false;
 
     for(var i = 0; i < hintedWorlds.length; i++) {
-        if(hintedWorlds[i] === proofLocations[0]) {
-            proofReportIndexes[0] = i;
-        }
-        if(hintedWorlds[i] === proofLocations[1]) {
-            proofReportIndexes[1] = i;
-        }
-        if(hintedWorlds[i] === proofLocations[2]) {
-            proofReportIndexes[2] = i;
+        if(reportLocations[i] === hintedWorlds[i]) {
+            console.log("selfhint");
+            selfHint =  true;
         }
     }
 
-    proofReportLocations[0] = reportLocations[proofReportIndexes[0]];
-    proofReportLocations[1] = reportLocations[proofReportIndexes[1]];
-    proofReportLocations[2] = reportLocations[proofReportIndexes[2]];
-
-    if(proofReportLocations[0] === proofLocations[0] || proofReportLocations[1] === proofLocations[1] || proofReportLocations[2] === proofLocations[2]) {
-        return true;
-    }
-    else {
-        return false;
-    }
-
-    
-
-
+    return selfHint;
 }

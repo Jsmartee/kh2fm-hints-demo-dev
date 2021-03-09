@@ -33,23 +33,28 @@
         
         <p>Features:</p>
         <ul>
-            <li>Do not allow proofs to be self hinted.</li>
+
+            <li>Prevent worlds from being self hinted.</li>
             <ul>
-                <li>Ex: If there's a proof in Space Paranoids and Report 3 hints Space Paranoids, then Report 3 cannot be in Space Paranoids.</li>
-                <li>Priority is still: Proofs > Drive Forms > Torn Pages > (Thunder then Magnet if Atlantica is on and has a Proof)</li>
-                <li>Therefore if the Proofs, Forms, and Pages (and Magic) are already taking up 13 hints, there will possibly be no hinted hints if everything is in a different world.</li>
+                <li>A world will not have it's own hint.</li>
+                <li>Edge cases exist where all reports may be located in a world or Terra and Shroom logic may prevent this from happening.</li>
+                <li>Hints given by proofs are unaffected by this logic.</li>
+                <li>If the site crashes or does not generate, refresh and try again. It would be very helpful to send me seeds that do not generate.</li>
             </ul>
 
             <li>Proofs give hints for unused worlds.</li>
             <ul>
                 <li>Logic stays the same</li>
                 <li>If there are less than 16 worlds enabled, some hints from proofs will say "Undefined"</li>
+                <li>Proofs may contain self hints even if the prevent self hints option is checked</li>
             </ul>
+
+            
         </ul>
 
         <p>Planned:</p>
         <ul>
-            <li>Prevent worlds from having their own hints.</li>
+            <strike><li>Prevent worlds from having their own hints.</li></strike>
                 <ul>
                     <li>Allow only for 1st visits?</li>
                 </ul>
@@ -89,15 +94,15 @@
 
                     <div class="row">
                         <label class="switch">
-                            <input type="checkbox" checked="false" id="selfHintProofs"/>
+                            <input type="checkbox" checked="true" id="selfHintProofs"/>
                             <span class="slider"></span>
                         </label>
-                        <p>Prevent Self Hinted Proofs</p>
+                        <p>Prevent Self Hinted Worlds</p>
                     </div>
 
                     <div class="row">
                         <label class="switch">
-                            <input type="checkbox" checked="false" id="proofHints"/>
+                            <input type="checkbox" checked="true" id="proofHints"/>
                             <span class="slider"></span>
                         </label>
                         <p>Proofs Give Hints</p>
