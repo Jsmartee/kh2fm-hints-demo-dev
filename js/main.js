@@ -14,7 +14,7 @@ var worldAndList = [];
 function update() {
     var updates = document.getElementsByClassName('update');
     for(var i = 0; i < updates.length; i++) {
-        updates[i].innerHTML = "Last Updated 3/9/21";
+        updates[i].innerHTML = "Last Updated 4/11/21";
     }
 }
 
