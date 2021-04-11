@@ -103,7 +103,7 @@ function generate() {
 
 function save() {
     var blob = new Blob(savedhints, {type: "text/plain;charset=utf-8"});
-    saveAs(blob, "kh2fm-hints-" + seed + ".txt");
+    saveAs(blob, "kh2fm-hints-" + seed + ".hint");
 }
 
 function uploadHints(button) {
